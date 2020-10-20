@@ -48,6 +48,17 @@ class Versions
         return $this->channel = 'stable';
     }
 
+    public function getChannelFriendly()
+    {
+        $channel = $this->getChannel();
+
+        if (!is_numeric($channel)) {
+            return $channel;
+        }
+
+        return $channel . '.x';
+    }
+
     public function setChannel($channel)
     {
         if (!in_array($channel, array('stable', 'preview', 'snapshot'), true)) {
